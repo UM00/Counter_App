@@ -1,0 +1,14 @@
+[Kafka:9092]
+[zookeeper:2181]
+----------------------------------------------_KAFKA_COMMANDs_--------------------------------------------------------------------------------
+docker ps                                                                                                          : Displays Docker container
+docker exec -it kafka bin/bash                                                                                     : To Start Kafka
+cd /opt/kafka/bin                                                                                                  : To move to bin Directory
+kafka-topics.sh --create --topic [name] --zookeeper IP:Port --partitions [Number] --replication-factor [Number]     :To create Topics
+kafka-topics.sh --zookeeper [IP:port] --alter --topic [name] --partitions [new-number]                              :To create more Partitions
+kafka-topics.sh --bootstrap-server [URL] --list                                                                   : To List all Topics
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic [name] --from-beginning                : To Listen for Consumed Msg in a Topic
+kafka-topics.sh --describe --topic [your-topic-name] --bootstrap-server [kafka-broker-host]:[port]         : To check partitions in a Topic
+kafka-console-consumer.sh --bootstrap-server [URL] --topic [topic] --property print.partition=true         : To chechk Partition Data
+kafka-console-producer.sh --broker-list localhost:9092 --topic [topic]                                             : To Produce Msg
+
