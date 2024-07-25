@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: counter
+  datasource:
+    url: jdbc:mysql://localhost:3306/counter1?serverTimezone=UTC
+    username: root
+    password: umoo
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 1000     # Adjust based on your needs
+      minimum-idle: 500          # Adjust based on your needs
+      idle-timeout: 30000         # Time in milliseconds
+      connection-timeout: 30000   # Time in milliseconds
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  redis:
+    host: localhost
+    port: 6379
+  kafka:
+    bootstrap-servers: Your_PC_URL:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: counter-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+server:
+  port: 8082
